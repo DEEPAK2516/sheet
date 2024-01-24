@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const dataList = document.getElementById("data-list");
-
     function fetchData() {
         fetch("https://api.apispreadsheets.com/data/7Y6D3v9jettdEyYJ/")
             .then(response => {
@@ -16,15 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => {
                 console.error('Error:', error);
-                dataList.innerHTML = '<li>Error fetching data</li>';
+                updateValues("Error fetching data", "Error fetching data", "Error fetching data");
             });
     }
 
     function displayData(item) {
-        dataList.innerHTML = "";
-        const listItem = document.createElement("li");
-        listItem.textContent = `Voltage: ${item.voltage}, Current: ${item.current}, Power: ${item.power}`;
-        dataList.appendChild(listItem);
+        updateValues(item.voltage, item.current, item.power);
+    }
+
+    function updateValues(voltage, current, power) {
+        document.getElementById("voltage-value").textContent = voltage;
+        document.getElementById("current-value").textContent = current;
+        document.getElementById("power-value").textContent = power;
     }
 
     // Fetch data initially
