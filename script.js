@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const dataList = document.getElementById("data-list");
 
-    fetch("https://api.apispreadsheets.com/data/igpKfuFRoU3Gwew5/")
+    fetch("https://api.apispreadsheets.com/data/7Y6D3v9jettdEyYJ/")
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dataList.innerHTML = "";
         data.forEach(item => {
             const listItem = document.createElement("li");
-            listItem.textContent = `${item.name}: ${item.value}`;
+            listItem.textContent = `Voltage: ${item.voltage}, Current: ${item.current}, Power: ${item.power}`;
             dataList.appendChild(listItem);
         });
     }
